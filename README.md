@@ -45,6 +45,8 @@ yarn start
 
 ## Changelog
 
+- Improved look and feel of the products
+- Added favicon
 - Endpoints called using store actions
 - Hooked backend using axios and express
 - Created Dockerfile and docker-compose.yml files to run mongo
@@ -72,5 +74,5 @@ add, edit and delete) and saved immediately.
 - Move all the files to a new Route
 - Rename HelloWorld component.
 - Handle server errors and show a modal to the user in the FE for mongo server down, timeout of the request etc.
-
+- Include the node app and FE inside docker image to avoid having the CORS issue and see if that resolves the issue and if positive should remove cors plugin from express.
 
