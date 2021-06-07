@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 // Connect to MongoDB
 mongoose
@@ -30,6 +32,6 @@ app.post('/Product/add', (req, res) => {
     .then(res.status(200).json({ msg: 'item saved' }));
 });
 
-const port = 3000;
+const port = 1234;
 
 app.listen(port, () => console.log('Server running...'));
