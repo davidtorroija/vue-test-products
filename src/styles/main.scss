@@ -1,49 +1,4 @@
-:root {
-    --blue: #007bff;
-    --indigo: #6610f2;
-    --purple: #6f42c1;
-    --pink: #e83e8c;
-    --red: #dc3545;
-    --orange: #fd7e14;
-    --yellow: #ffc107;
-    --green: #28a745;
-    --teal: #20c997;
-    --cyan: #17a2b8;
-    --gray: #6c757d;
-    --gray-dark: #343a40;
-    --primary: #304ffe;
-    --secondary: #e2e6ff;
-    --success: #14cc9e;
-    --info: #ab47bc;
-    --warning: #ffc107;
-    --danger: #ff5252;
-    --light: #eee;
-    --dark: #212121;
-    --primary-dark: #0123e5;
-    --primary-light: #7c90fe;
-    --secondary-dark: #afbaff;
-    --secondary-light: #fcfcff;
-    --success-dark: #0d8668;
-    --success-light: #b4f8e7;
-    --danger-dark: #eb0000;
-    --danger-light: #ffb8b8;
-    --warning-dark: #edb100;
-    --warning-light: #ffe7a0;
-    --info-dark: #8a3898;
-    --info-light: #efddf2;
-    --light-dark: #bbb;
-    --light-light: #fbfbfb;
-    --dark-dark: #080808;
-    --dark-light: #e0e0e0;
-    --white: #fff;
-    --darkish: #424242;
-    --darkish-light: #717171;
-    --breakpoint-xs: 0;
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-}
+@import './colors.scss';
 
 *, :after, :before {
     box-sizing: border-box;
@@ -63,12 +18,26 @@ body {
 
 #app {
     max-width: var(--breakpoint-xl);
-    display: flex;
+    margin: 0 auto;
+}
+
+.margin-y {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .btn {
-    border: 0;
+    border: 1px solid var(--white);
     padding: 0.5rem;
+    color: var(--white);
+    background-color: var(--info-dark);
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    cursor: pointer;
+}
+.btn-icon {
+    background-color: transparent;
+    border: 0;
 }
 .row {
     display: flex;
