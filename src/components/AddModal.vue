@@ -2,15 +2,15 @@
   <div class="AddModal">
     <div class="AddModal__outer">
       <div class="AddModal__header">
-        <span>{{ modalTitle }}</span>
+        <h3>{{ modalTitle }}</h3>
         <button class="btn btn-icon" @click="closeModal">
           <span class="fa fas fa-times fa-lg"></span>
         </button>
       </div>
-      <div class="AddModal__body">Body</div>
+      <div class="AddModal__body"></div>
       <div class="AddModal__footer">
-        <button class="btn" @click="closeModal">
-          SAVE
+        <button class="btn" @click="addNewProduct">
+          ADD
         </button>
       </div>
     </div>
@@ -31,9 +31,15 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['getProducts']),
+    ...mapActions([
+      'getProducts',
+      'addProduct',
+    ]),
     closeModal() {
       this.$emit('close');
+    },
+    addNewProduct() {
+      this.addProduct({ imageURL: 'imageURL1', description: 'description2' });
     },
   },
   props: {
@@ -81,8 +87,11 @@ export default {
       width: 50%;
       z-index: 1060;
       // border: 1rem solid var(--white);
-      border-radius: 0.5rem;
-      padding: 0.5rem;
+      border-radius: 0;
+      padding-right: 0.5rem;
+      padding-top: 0.5rem;
+      padding-left: 1rem;
+      padding-bottom: 1rem;
       display: flex;
       flex-direction: column;
     }

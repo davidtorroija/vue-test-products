@@ -23,13 +23,21 @@ app.get('/', (req, res) => {
     .catch((err) => res.status(404).json({ msg: 'No items found', err }));
 });
 
-app.post('/Product/add', (req, res) => {
-  const newItem = new Product({
-    name: req.body.name,
-  });
-
-  newItem.save()
-    .then(res.status(200).json({ msg: 'item saved' }));
+app.post('/Product', (req, res) => {
+  if (!req.body.imageURL) {
+    return res.status(400).json({ msg: 'imageURL is required' });
+  }
+  if (!req.body.description) {
+    return res.status(400).json({ msg: 'description is required' });
+  }
+  const newItem = new Product(req.body);
+  return newItem.save()
+    .then((item) => {
+      res.status(200).json(item);
+    })
+    .catch(() => {
+      res.status(500).json({ msg: 'something weird happened!' });
+    });
 });
 
 const port = 1234;

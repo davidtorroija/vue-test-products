@@ -44,7 +44,12 @@ yarn start
 ```
 
 ## Changelog
-
+- Hooked up the add product method in the FE and BE
+- Added description and imageURL fields in the DB
+- Separated colors into a new scss file
+- Added AddModal component and added some styles to this component
+- Developed the Close modal logic
+- Added some shared classes in the main scss
 - Improved look and feel of the products
 - Added favicon
 - Endpoints called using store actions
@@ -75,4 +80,5 @@ add, edit and delete) and saved immediately.
 - Rename HelloWorld component.
 - Handle server errors and show a modal to the user in the FE for mongo server down, timeout of the request etc.
 - Include the node app and FE inside docker image to avoid having the CORS issue and see if that resolves the issue and if positive should remove cors plugin from express.
+- Make a gif walking through the application and that GIF in this readme.
 

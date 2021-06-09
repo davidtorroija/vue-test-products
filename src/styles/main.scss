@@ -16,6 +16,10 @@ body {
     display: flex;
 }
 
+h3 {
+    margin:0;
+}
+
 #app {
     max-width: var(--breakpoint-xl);
     margin: 0 auto;
