@@ -23,7 +23,7 @@
           </div>
       </template>
     </div>
-    <div class="row px-1">
+    <!-- <div class="row px-1">
       <template v-for="(product, index) in products">
           <div
               :key="index"
@@ -39,7 +39,7 @@
             </span>
           </div>
       </template>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -49,7 +49,7 @@ import { mapActions, mapGetters } from 'vuex';
 import AddModal from './AddModal.vue';
 
 export default {
-  name: 'HelloWorld',
+  name: 'ProductsDashboard',
   data() {
     return {
       isAddModalVisible: false,

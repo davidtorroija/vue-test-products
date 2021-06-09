@@ -42,6 +42,12 @@ h3 {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     cursor: pointer;
+    &:hover {
+        background-color: var(--info);
+    }
+    &:active {
+        background-color: var(--purple);
+    }
 }
 .btn-icon {
     background-color: transparent;

@@ -40,7 +40,7 @@
 import { mapActions } from 'vuex';
 
 export default {
-  name: 'HelloWorld',
+  name: 'AddModal',
   data() {
     return {
       product: {

@@ -44,6 +44,7 @@ yarn start
 ```
 
 ## Changelog
+- Buttons event styling.
 - Rename HelloWorld component.
 - Hooked up the add product method in the FE and BE
 - Added description and imageURL fields in the DB
