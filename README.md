@@ -44,6 +44,7 @@ yarn start
 ```
 
 ## Changelog
+- Rename HelloWorld component.
 - Hooked up the add product method in the FE and BE
 - Added description and imageURL fields in the DB
 - Separated colors into a new scss file
@@ -77,7 +78,6 @@ add, edit and delete) and saved immediately.
 - Add loader bones, and use loader from codepen I saw in google email.
 - Add a video showing how to start the application.
 - Move all the files to a new Route
-- Rename HelloWorld component.
 - Handle server errors and show a modal to the user in the FE for mongo server down, timeout of the request etc.
 - Include the node app and FE inside docker image to avoid having the CORS issue and see if that resolves the issue and if positive should remove cors plugin from express.
 - Make a gif walking through the application and that GIF in this readme.
