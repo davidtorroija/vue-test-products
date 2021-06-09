@@ -33,10 +33,13 @@ app.post('/Product', (req, res) => {
   const newItem = new Product(req.body);
   return newItem.save()
     .then((item) => {
+      if (!item) {
+        throw new Error('Item not found'); // reject promise with error
+      }
       res.status(200).json(item);
     })
-    .catch(() => {
-      res.status(500).json({ msg: 'something weird happened!' });
+    .catch((err) => {
+      res.status(500).json({ err });
     });
 });
 
