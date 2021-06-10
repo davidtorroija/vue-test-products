@@ -44,6 +44,7 @@ yarn start
 ```
 
 ## Changelog
+- Preview the image in the modal
 - Move file to a static folder of the app
 - Send file to express
 - Buttons event styling.
@@ -87,5 +88,6 @@ add, edit and delete) and saved immediately.
 - Handle server errors and show a modal to the user in the FE for mongo server down, timeout of the request etc.
 - Include the node app and FE inside docker image to avoid having the CORS issue and see if that resolves the issue and if positive should remove cors plugin from express.
 - Make a gif walking through the application and that GIF in this readme.
+- Loaders everywhere
 
 
