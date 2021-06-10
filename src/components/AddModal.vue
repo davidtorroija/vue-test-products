@@ -131,6 +131,7 @@ export default {
     &__body {
       flex-grow: 1;
       padding-right: 1rem;
+      overflow-y: auto;
     }
     &__header {
       justify-content: space-between;

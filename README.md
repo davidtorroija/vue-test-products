@@ -58,6 +58,8 @@ add, edit and delete) and saved immediately.~~
 - Show a message when no results.
 
 ## Changelog
+- Improved the UI of the dashboard
+- Added paste hook to avoid pasting css in the text area.
 - Preview the image in the modal
 - Move file to a static folder of the app
 - Send file to express
