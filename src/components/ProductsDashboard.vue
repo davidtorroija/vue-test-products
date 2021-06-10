@@ -112,6 +112,7 @@ export default {
       top: 0;
       background-color: rgb(172 45 238 / 78%);
       z-index: 901;
+      visibility: hidden;
     }
     &__description {
       position: absolute;
@@ -123,14 +124,21 @@ export default {
       bottom: 0;
       left: 20px;
       z-index: 902;
+      visibility: hidden;
     }
     &__menu {
+      visibility: hidden;
       position: absolute;
       z-index: 902;
       right: 20px;
       top: 5px;
     }
-    // &:hover {
-    // }
+    &:hover {
+      .ProductCard {
+        &__menu, &__description, &__overlay {
+          visibility: visible;
+        }
+      }
+    }
   }
 </style>
