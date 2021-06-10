@@ -27,7 +27,7 @@
             >
             <div class="ProductCard__overlay">
             </div>
-            <span class="ProductCard__description">
+            <span class="ProductCard__description" :title="product.description">
               {{ product.description }}
             </span>
           </div>
@@ -93,8 +93,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .ProductCard {
-    flex: 0 0 35%;
-    max-width: 35%;
+    flex: 0 0 28%;
+    max-width: 28%;
     position: relative;
     width: 100%;
     padding-right: 15px;
@@ -103,6 +103,7 @@ export default {
     z-index: 900;
     &__image {
       width: 100%;
+      max-height: 400px;
     }
     &__overlay {
       position: absolute;

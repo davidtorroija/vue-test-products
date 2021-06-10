@@ -12,6 +12,7 @@
         <div
           class="AddModal__textArea AddModal--input-color"
           contenteditable="true"
+          ref="richtextArea"
           aria-placeholder="Add a description"
           v-html="product.description"
           @blur="updateDescription($event)"
@@ -92,6 +93,11 @@ export default {
       this.product.imageURL = `db-images/${result.fileName}`;
       this.isLoading = false;
     },
+    removeStyles(evt) {
+      evt.preventDefault();
+      const text = evt.clipboardData.getData('text/plain');
+      document.execCommand('insertHTML', false, text);
+    },
   },
   props: {
     modalTitle: {
@@ -99,12 +105,12 @@ export default {
       default: 'Add Product',
     },
   },
-  // computed: {
-  //   ...mapGetters(['products']),
-  // },
-  // created() {
-  //   this.getProducts();
-  // },
+  mounted() {
+    this.$refs.richtextArea.addEventListener('paste', this.removeStyles);
+  },
+  beforeDestroy() {
+    this.$refs.richtextArea.removeEventListener('paste', this.removeStyles);
+  },
 };
 </script>
 
