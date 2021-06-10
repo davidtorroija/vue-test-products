@@ -42,6 +42,20 @@ docker-compose up
 ```
 yarn start
 ```
+## Primary tasks
+- There should be a counter in the page that shows how many items are being
+displayed.
+- Each item should have the actions: edit and delete. Edit allows a user to update the
+image of an item and the description text. Delete allows a user to remove an item
+from the list and update the counter.
+- ~~A functionality to add a new item should exist. This functionality consists of a form to
+upload an image (jpg, gif and png extensions of 320px x 320px size) and a
+description text (max chars 300).~~
+- The user should be able to sort the items on the list.
+- ~~All the actions of the application should be done without refreshing the page (sort,
+add, edit and delete) and saved immediately.~~
+- On a page refresh action, it should display the last state of the list.
+- Show a message when no results.
 
 ## Changelog
 - Preview the image in the modal
@@ -63,20 +77,6 @@ yarn start
 - Created Dockerfile and docker-compose.yml files to run mongo
 
 ## TODO
-
-- There should be a counter in the page that shows how many items are being
-displayed.
-- Each item should have the actions: edit and delete. Edit allows a user to update the
-image of an item and the description text. Delete allows a user to remove an item
-from the list and update the counter.
-- A functionality to add a new item should exist. This functionality consists of a form to
-upload an image (jpg, gif and png extensions of 320px x 320px size) and a
-description text (max chars 300).
-- The user should be able to sort the items on the list.
-- All the actions of the application should be done without refreshing the page (sort,
-add, edit and delete) and saved immediately.
-- On a page refresh action, it should display the last state of the list.
-- Show a message when no results.
 - Invalid Image error handling when upload.
 - Drag and drop files.
 - Create a BE method to update an item.
