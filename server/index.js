@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 const app = express();
+app.use(fileUpload());
 
 app.use(cors());
 app.use(express.json());
@@ -31,7 +33,8 @@ app.post('/Product', (req, res) => {
     return res.status(400).json({ msg: 'description is required' });
   }
   const newItem = new Product(req.body);
-  return newItem.save()
+  return newItem
+    .save()
     .then((item) => {
       if (!item) {
         throw new Error('Item not found'); // reject promise with error
@@ -41,6 +44,22 @@ app.post('/Product', (req, res) => {
     .catch((err) => {
       res.status(500).json({ err });
     });
+});
+
+app.post('/upload-image', (req, res) => {
+  if (req.files) {
+    const { image } = req.files;
+    const fileName = image.name;
+    image.mv(`${__dirname}/../public/db-images/${fileName}`, (err) => {
+      if (err) {
+        res.status(500).json({ err });
+      } else {
+        res.status(200).json({ fileName });
+      }
+    });
+  } else {
+    res.send('There are no files');
+  }
 });
 
 const port = 1234;

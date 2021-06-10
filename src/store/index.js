@@ -25,6 +25,10 @@ export default new Vuex.Store({
       const product = await productsApi.addProduct({ imageURL, description });
       commit('ADD_PRODUCT', { product });
     },
+    async uploadImage(store, { formData }) {
+      const imageURL = await productsApi.uploadImage({ formData });
+      return imageURL;
+    },
   },
   getters: {
     products: (state) => state.products,

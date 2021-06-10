@@ -62,7 +62,6 @@ export default {
     ...mapActions(['getProducts']),
     showAddProductModal() {
       this.isAddModalVisible = true;
-      console.log('aca');
     },
     closeAddModal() {
       this.isAddModalVisible = false;

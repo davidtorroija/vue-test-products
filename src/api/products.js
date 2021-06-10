@@ -11,17 +11,28 @@ const api = axios.create({
 // DELETE          Deletes a resource.
 export default {
   getProducts() {
-    return api.get()
+    return api
+      .get()
       .then((response) => response.data)
       .catch((err) => {
         throw err;
       });
   },
   addProduct({ imageURL, description }) {
-    return api.post('/Product', { imageURL, description })
+    return api
+      .post('/Product', { imageURL, description })
       .then((response) => response)
       .catch((err) => {
         throw err;
       });
+  },
+  uploadImage({ formData }) {
+    return api
+      .post('/upload-image', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((response) => response.data);
   },
 };

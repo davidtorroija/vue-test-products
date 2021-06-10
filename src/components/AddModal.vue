@@ -8,11 +8,6 @@
         </button>
       </div>
       <div class="AddModal__body">
-        <span class="AddModal__label">Image URL:</span>
-        <input
-          type="text" name="image Input" id="image-input"
-          v-model="product.imageURL" class="AddModal--input-color"
-        >
         <span class="AddModal__label">Description:</span>
         <div
           class="AddModal__textArea AddModal--input-color"
@@ -22,7 +17,21 @@
           @blur="updateDescription($event)"
         >
         </div>
-<!-- <textarea v-model="product.description" placeholder="agregar múltiples líneas"></textarea> -->
+        <img
+          class="AddModal__previewImage margin-top-1"
+          v-if="product.imageURL" :src="product.imageURL" alt=""
+        >
+        <button v-else class="btn margin-top-1" @click="$refs.fileInput.click()">
+          Upload Image
+        </button>
+        <input
+            ref="fileInput"
+            style="display: none"
+            type="file"
+            @click="e => e.stopPropagation()"
+            @change="onFileChange($event)"
+            accept="JPG, PNG, JPEG"
+        />
       </div>
       <div class="AddModal__footer">
         <button class="btn" @click="addNewProduct">
@@ -44,15 +53,17 @@ export default {
   data() {
     return {
       product: {
-        imageURL: 'some URL',
-        description: 'some desc',
+        imageURL: null,
+        description: 'Todo: add a placeholder',
       },
+      isLoading: false,
     };
   },
   methods: {
     ...mapActions([
       'getProducts',
       'addProduct',
+      'uploadImage',
     ]),
     closeModal() {
       this.$emit('close');
@@ -63,6 +74,23 @@ export default {
     },
     updateDescription(event) {
       this.product.description = event.target.innerText;
+    },
+    async onFileChange(event) {
+      const { files } = event.target;
+      if (this.isLoading) {
+        return;
+      }
+      if (!files.length) {
+        return;
+      }
+      event.preventDefault();
+      event.stopPropagation();
+
+      const formData = new FormData();
+      formData.append('image', files[0]);
+      const result = await this.uploadImage({ formData });
+      this.product.imageURL = `db-images/${result.fileName}`;
+      this.isLoading = false;
     },
   },
   props: {
@@ -146,6 +174,10 @@ export default {
       width: 100%;
       display: block;
       min-height: 2rem;
+    }
+    &__previewImage {
+      max-width: 300px;
+      max-height: 300px;
     }
   }
 </style>

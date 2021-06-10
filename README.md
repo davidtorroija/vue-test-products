@@ -44,8 +44,11 @@ yarn start
 ```
 
 ## Changelog
+- Move file to a static folder of the app
+- Send file to express
 - Buttons event styling.
-- Rename HelloWorld component.
+- Inputs styling.
+- Rename HelloWorld component to ProductsDashboard.
 - Hooked up the add product method in the FE and BE
 - Added description and imageURL fields in the DB
 - Separated colors into a new scss file
@@ -73,6 +76,8 @@ description text (max chars 300).
 add, edit and delete) and saved immediately.
 - On a page refresh action, it should display the last state of the list.
 - Show a message when no results.
+- Invalid Image error handling when upload.
+- Drag and drop files.
 - Create a BE method to update an item.
 - Add look and feel to the boxes.
 - Validate input text.
@@ -82,4 +87,5 @@ add, edit and delete) and saved immediately.
 - Handle server errors and show a modal to the user in the FE for mongo server down, timeout of the request etc.
 - Include the node app and FE inside docker image to avoid having the CORS issue and see if that resolves the issue and if positive should remove cors plugin from express.
 - Make a gif walking through the application and that GIF in this readme.
+
 
