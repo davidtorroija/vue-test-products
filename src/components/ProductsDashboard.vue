@@ -2,7 +2,7 @@
   <div class="hello">
     <AddModal @close="closeAddModal" v-if="isAddModalVisible"/>
     <h1> Code test for David Torroija</h1>
-    <button class="btn margin-y" @click="showAddProductModal">
+    <button class="btn margin-y px-1" @click="showAddProductModal">
       ADD
       <span class="fa fas fa-plus"></span>
     </button>
@@ -12,11 +12,21 @@
               :key="index"
               class="ProductCard"
           >
+            <div class="ProductCard__menu">
+              <button class="btn btn-icon px-1" @click="editProduct">
+              <span class="fa fas fa-pencil fa-lg"></span>
+              </button>
+              <button class="btn btn-icon px-1" @click="deleteProduct">
+                <span class="fa fas fa-trash fa-lg"></span>
+              </button>
+            </div>
             <img
               :src="product.imageURL"
               alt="some Image"
               class="ProductCard__image"
             >
+            <div class="ProductCard__overlay">
+            </div>
             <span class="ProductCard__description">
               {{ product.description }}
             </span>
@@ -66,6 +76,10 @@ export default {
     closeAddModal() {
       this.isAddModalVisible = false;
     },
+    editProduct() {
+    },
+    deleteProduct() {
+    },
   },
   computed: {
     ...mapGetters(['products']),
@@ -79,15 +93,44 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .ProductCard {
-    flex: 0 0 25%;
-    max-width: 25%;
+    flex: 0 0 35%;
+    max-width: 35%;
     position: relative;
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     display: inline-block;
+    z-index: 900;
     &__image {
       width: 100%;
     }
+    &__overlay {
+      position: absolute;
+      bottom: 0;
+      left: 15px;
+      right: 15px;
+      top: 0;
+      background-color: rgb(172 45 238 / 78%);
+      z-index: 901;
+    }
+    &__description {
+      position: absolute;
+      height: 35px;
+      width: 89%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      bottom: 0;
+      left: 20px;
+      z-index: 902;
+    }
+    &__menu {
+      position: absolute;
+      z-index: 902;
+      right: 20px;
+      top: 5px;
+    }
+    // &:hover {
+    // }
   }
 </style>
