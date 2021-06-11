@@ -3,11 +3,12 @@
     <AddModal @close="closeAddModal" v-if="isAddModalVisible" :editingProduct="editingProduct"/>
     <h1> Code test for David Torroija</h1>
     <div v-if="products.length">
-      <div class="header">
+      <div class="Products__Header">
         <button class="btn margin-y" @click="showAddProductModal">
           ADD
           <span class="fa fas fa-plus"></span>
         </button>
+        <Dropdown label="Sort Items by:" />
         <span class="px-1"> Listing {{products.length}} products.</span>
       </div>
       <div class="row">
@@ -36,6 +37,7 @@
 import { mapActions, mapGetters } from 'vuex';
 import AddModal from './AddModal.vue';
 import Product from './Product.vue';
+import Dropdown from './Dropdown.vue';
 
 export default {
   name: 'ProductsDashboard',
@@ -43,11 +45,31 @@ export default {
     return {
       isAddModalVisible: false,
       editingProduct: null,
+      sortBy: 'description:desc',
+      sortyByOptions: [
+        {
+          label: 'Description A to Z',
+          value: 'description:asc',
+        },
+        {
+          label: 'Description Z to A',
+          value: 'description:desc',
+        },
+        {
+          label: 'Created Ascending',
+          value: 'date:desc',
+        },
+        {
+          label: 'Created Descending',
+          value: 'date:desc',
+        },
+      ],
     };
   },
   components: {
     AddModal,
     Product,
+    Dropdown,
   },
   methods: {
     ...mapActions([
@@ -78,3 +100,10 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+  .Products__Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+</style>
