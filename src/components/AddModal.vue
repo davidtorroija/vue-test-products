@@ -61,6 +61,8 @@ export default {
         description: this.editingProduct ? this.editingProduct.description : 'Some Description...',
       },
       isLoading: false,
+      charLimit: 300,
+      timeout: null,
     };
   },
   computed: {
@@ -106,6 +108,7 @@ export default {
     },
     updateDescription(event) {
       this.product.description = event.target.innerText;
+      this.product.description = this.product.description.substring(0, 300);
     },
     async onFileChange(event) {
       const { files } = event.target;
@@ -124,17 +127,18 @@ export default {
       this.product.imageURL = `db-images/${result.fileName}`;
       this.isLoading = false;
     },
-    removeStyles(evt) {
+    parsePasteAndLimitChars(evt) {
       evt.preventDefault();
       const text = evt.clipboardData.getData('text/plain');
-      document.execCommand('insertHTML', false, text);
+      const max = this.charLimit - this.product.description.length;
+      document.execCommand('insertHTML', false, text.substring(0, max > 0 ? max : 0));
     },
   },
   mounted() {
-    this.$refs.richtextArea.addEventListener('paste', this.removeStyles);
+    this.$refs.richtextArea.addEventListener('paste', this.parsePasteAndLimitChars);
   },
   beforeDestroy() {
-    this.$refs.richtextArea.removeEventListener('paste', this.removeStyles);
+    this.$refs.richtextArea.removeEventListener('paste', this.parsePasteAndLimitChars);
   },
 };
 </script>

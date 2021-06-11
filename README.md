@@ -13,7 +13,7 @@ http://localhost:8080
 
 ## Primary tasks
 - The user should be able to sort the items on the list.
-- On a page refresh action, it should display the last state of the list.
+- ~~On a page refresh action, it should display the last state of the list.~~
 - Show a message when no results.
 - ~~Each item should have the actions: edit and delete. Edit allows a user to update the
 image of an item and the description text. Delete allows a user to remove an item
@@ -27,6 +27,7 @@ description text (max chars 300).~~
 add, edit and delete) and saved immediately.~~
 
 ## Changelog
+- Integrated all the apps to run via docker!
 - Refactor BE, moved REST methods to a file
 - Sorting items
 - Added dropdown to sort items
