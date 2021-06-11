@@ -5,24 +5,9 @@
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Start FE
 ```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Run your end-to-end tests
-```
-yarn test:e2e
+yarn serve-prod
 ```
 
 ### Lints and fixes files
@@ -42,6 +27,8 @@ docker-compose up
 ```
 yarn start
 ```
+
+
 ## Primary tasks
 - The user should be able to sort the items on the list.
 - On a page refresh action, it should display the last state of the list.
@@ -58,7 +45,9 @@ description text (max chars 300).~~
 add, edit and delete) and saved immediately.~~
 
 ## Changelog
-- Sort items on the FE (if I have time will do this on the BE)
+- Refactor BE, moved REST methods to a file
+- Sorting items
+- Added dropdown to sort items
 - Editing an item is working!
 - Improved the UI of the dashboard
 - Added paste hook to avoid pasting css in the text area.
