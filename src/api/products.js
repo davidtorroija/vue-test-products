@@ -21,7 +21,23 @@ export default {
   addProduct({ imageURL, description }) {
     return api
       .post('/Product', { imageURL, description })
-      .then((response) => response)
+      .then((response) => response.data)
+      .catch((err) => {
+        throw err;
+      });
+  },
+  updateProduct({ id, imageURL, description }) {
+    return api
+      .put(`/Product/${id}`, { imageURL, description })
+      .then((response) => response.data)
+      .catch((err) => {
+        throw err;
+      });
+  },
+  deleteProduct({ id }) {
+    return api
+      .delete(`/Product/${id}`)
+      .then((response) => response.data)
       .catch((err) => {
         throw err;
       });

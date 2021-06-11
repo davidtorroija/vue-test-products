@@ -61,6 +61,13 @@ h3 {
         box-shadow: 0px 0px 2px #888;
     }
 }
+.px-1 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.pt-1 {
+    padding-top: 1rem;
+}
 .row {
     display: flex;
     flex-wrap: wrap;

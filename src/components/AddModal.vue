@@ -35,7 +35,10 @@
         />
       </div>
       <div class="AddModal__footer">
-        <button class="btn" @click="addNewProduct">
+        <button v-if="isEditing" class="btn" @click="onUpdateProduct">
+          SAVE
+        </button>
+        <button v-else class="btn" @click="onAddProduct">
           ADD
         </button>
       </div>
@@ -54,23 +57,48 @@ export default {
   data() {
     return {
       product: {
-        imageURL: null,
-        description: 'Todo: add a placeholder',
+        imageURL: this.editingProduct ? this.editingProduct.imageURL : '',
+        description: this.editingProduct ? this.editingProduct.description : 'Some Description...',
       },
       isLoading: false,
     };
+  },
+  computed: {
+    modalTitle() {
+      return this.editingProduct ? 'Edit Product' : 'Add Product';
+    },
+    isEditing() {
+      return !!this.editingProduct;
+    },
+  },
+  props: {
+    editingProduct: {
+      type: Object,
+      default: null,
+      required: false,
+    },
   },
   methods: {
     ...mapActions([
       'getProducts',
       'addProduct',
+      'updateProduct',
       'uploadImage',
     ]),
     closeModal() {
       this.$emit('close');
     },
-    async addNewProduct() {
+    async onAddProduct() {
       await this.addProduct(this.product);
+      this.closeModal();
+    },
+    async onUpdateProduct() {
+      await this.updateProduct({
+        // eslint-disable-next-line no-underscore-dangle
+        id: this.editingProduct._id,
+        imageURL: this.product.imageURL,
+        description: this.product.description,
+      });
       this.closeModal();
     },
     updateDescription(event) {
@@ -97,12 +125,6 @@ export default {
       evt.preventDefault();
       const text = evt.clipboardData.getData('text/plain');
       document.execCommand('insertHTML', false, text);
-    },
-  },
-  props: {
-    modalTitle: {
-      type: String,
-      default: 'Add Product',
     },
   },
   mounted() {
@@ -139,8 +161,6 @@ export default {
       align-items: center;
     }
     &__outer {
-      position: absolute;
-      margin: 0 auto;
       background-color: var(--gray);
       height: 80%;
       width: 50%;
@@ -153,6 +173,9 @@ export default {
       padding-bottom: 1rem;
       display: flex;
       flex-direction: column;
+      position: fixed;
+      margin: 0 auto;
+      left: 25%;
     }
     &__input {
       margin-top: 0.5rem;

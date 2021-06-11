@@ -14,6 +14,7 @@ export default new Vuex.Store({
     },
     ADD_PRODUCT(state, { product }) {
       Vue.set(state.products, state.products.length - 1, product);
+      console.log('pro', state.products);
     },
   },
   actions: {
@@ -24,6 +25,12 @@ export default new Vuex.Store({
     async addProduct({ commit }, { imageURL, description }) {
       const product = await productsApi.addProduct({ imageURL, description });
       commit('ADD_PRODUCT', { product });
+    },
+    async deleteProduct(state, { id }) {
+      await productsApi.deleteProduct({ id });
+    },
+    async updateProduct(state, { id, imageURL, description }) {
+      await productsApi.updateProduct({ id, imageURL, description });
     },
     async uploadImage(store, { formData }) {
       const imageURL = await productsApi.uploadImage({ formData });

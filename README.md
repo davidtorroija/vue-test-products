@@ -43,21 +43,23 @@ docker-compose up
 yarn start
 ```
 ## Primary tasks
-- There should be a counter in the page that shows how many items are being
-displayed.
-- Each item should have the actions: edit and delete. Edit allows a user to update the
+- The user should be able to sort the items on the list.
+- On a page refresh action, it should display the last state of the list.
+- Show a message when no results.
+- ~~Each item should have the actions: edit and delete. Edit allows a user to update the
 image of an item and the description text. Delete allows a user to remove an item
-from the list and update the counter.
+from the list and update the counter.~~
+- ~~There should be a counter in the page that shows how many items are being
+displayed~~.
 - ~~A functionality to add a new item should exist. This functionality consists of a form to
 upload an image (jpg, gif and png extensions of 320px x 320px size) and a
 description text (max chars 300).~~
-- The user should be able to sort the items on the list.
 - ~~All the actions of the application should be done without refreshing the page (sort,
 add, edit and delete) and saved immediately.~~
-- On a page refresh action, it should display the last state of the list.
-- Show a message when no results.
 
 ## Changelog
+- Sort items on the FE (if I have time will do this on the BE)
+- Editing an item is working!
 - Improved the UI of the dashboard
 - Added paste hook to avoid pasting css in the text area.
 - Preview the image in the modal
@@ -79,6 +81,7 @@ add, edit and delete) and saved immediately.~~
 - Created Dockerfile and docker-compose.yml files to run mongo
 
 ## TODO
+- Remove image when editing
 - Invalid Image error handling when upload.
 - Drag and drop files.
 - Create a BE method to update an item.
@@ -91,5 +94,6 @@ add, edit and delete) and saved immediately.~~
 - Include the node app and FE inside docker image to avoid having the CORS issue and see if that resolves the issue and if positive should remove cors plugin from express.
 - Make a gif walking through the application and that GIF in this readme.
 - Loaders everywhere
+- Mongodb investigate deprecation warning on edit
 
 
