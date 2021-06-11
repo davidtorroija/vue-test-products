@@ -35,10 +35,10 @@
         />
       </div>
       <div class="AddModal__footer">
-        <button v-if="isEditing" class="btn" @click="onUpdateProduct">
+        <button v-if="isEditing" class="btn" @click="onUpdateProduct" :disabled="invalid">
           SAVE
         </button>
-        <button v-else class="btn" @click="onAddProduct">
+        <button v-else class="btn" @click="onAddProduct" :disabled="invalid">
           ADD
         </button>
       </div>
@@ -69,6 +69,9 @@ export default {
     },
     isEditing() {
       return !!this.editingProduct;
+    },
+    invalid() {
+      return !this.product.imageURL || !this.product.description;
     },
   },
   props: {
@@ -159,6 +162,10 @@ export default {
       justify-content: space-between;
       display: flex;
       align-items: center;
+      padding-bottom: 0.5rem;
+    }
+    &__footer {
+      padding-top: 0.5rem;
     }
     &__outer {
       background-color: var(--gray);

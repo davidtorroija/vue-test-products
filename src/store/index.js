@@ -13,7 +13,7 @@ export default new Vuex.Store({
       Vue.set(state, 'products', products);
     },
     ADD_PRODUCT(state, { product }) {
-      Vue.set(state.products, state.products.length - 1, product);
+      Vue.set(state.products, state.products.length, product);
       console.log('pro', state.products);
     },
   },
