@@ -27,6 +27,7 @@ description text (max chars 300).~~
 add, edit and delete) and saved immediately.~~
 
 ## Changelog
+- Limit input to 300 chars
 - Integrated all the apps to run via docker!
 - Refactor BE, moved REST methods to a file
 - Sorting items
