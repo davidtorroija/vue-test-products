@@ -1,0 +1,31 @@
+version: '3'
+services:
+  client:
+    build: .
+    ports:
+      - 8080:8080
+    container_name: vue_FE
+    depends_on:
+      - server
+    volumes: 
+      - ./app:/app/images
+  server:
+    build: ./server
+    ports:
+      - 1234:1234
+    container_name: express_BE
+    depends_on:
+      - mongo
+    volumes: 
+      - ./app:/app/images
+  mongo:
+    image: 'mongo:latest'
+    command: mongod --port 27018
+    ports:
+        - '27018:27018'
+    volumes:
+      - mongodb:/data/db
+    container_name: mongo_db
+volumes:
+  mongodb:
+  app:

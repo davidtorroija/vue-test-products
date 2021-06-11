@@ -1,33 +1,15 @@
-# Mini project to show my vue and node skills.
+## David Torroija Code test
 
-## Project setup
-```
-yarn install
-```
 
-### Start FE
+### To start all the services (mongo, express, browser app)
 ```
-yarn serve-prod
+docker-compose up --build
 ```
-
-### Lints and fixes files
+### Then go to a browser an type
 ```
-yarn lint
+http://localhost:8080
 ```
-
-## For the server part
-
-Go to `./server` and type:
-
-### To start mongo
-```
-docker-compose up
-```
-### To start node
-```
-yarn start
-```
-
+---
 
 ## Primary tasks
 - The user should be able to sort the items on the list.
