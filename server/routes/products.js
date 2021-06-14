@@ -71,7 +71,7 @@ module.exports = (function () {
     if (req.files) {
       const { image } = req.files;
       const fileName = image.name;
-      image.mv(`${__dirname}/../../images/${fileName}`, (err) => {
+      image.mv(`${__dirname}/../../public/images/${fileName}`, (err) => {
         if (err) {
           res.status(500).json({ err });
         } else {

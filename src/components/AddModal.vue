@@ -124,7 +124,7 @@ export default {
       const formData = new FormData();
       formData.append('image', files[0]);
       const result = await this.uploadImage({ formData });
-      this.product.imageURL = `db-images/${result.fileName}`;
+      this.product.imageURL = `images/${result.fileName}`;
       this.isLoading = false;
     },
     parsePasteAndLimitChars(evt) {

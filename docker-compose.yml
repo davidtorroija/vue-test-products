@@ -8,7 +8,7 @@ services:
     depends_on:
       - server
     volumes: 
-      - ./app:/app/images
+      - ./app:/app/public/images
   server:
     build: ./server
     ports:
@@ -17,7 +17,7 @@ services:
     depends_on:
       - mongo
     volumes: 
-      - ./app:/app/images
+      - ./app:/app/public/images
   mongo:
     image: 'mongo:latest'
     command: mongod --port 27018
