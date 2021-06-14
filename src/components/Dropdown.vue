@@ -2,13 +2,13 @@
     <div>
         <span>{{ label }}</span>
         <div class="select">
-            <select id="standard-select">
-                <option value="Option 1">Option 1</option>
-                <option value="Option 2">Option 2</option>
-                <option value="Option 3">Option 3</option>
-                <option value="Option 4">Option 4</option>
-                <option value="Option 5">Option 5</option>
-                <option value="Option length">Option that has too long of a value to fit</option>
+            <select id="standard-select" v-model="selectedOption">
+                <option
+                  v-for="(option, index) in options"
+                  :key="index" :value="option.value"
+                >
+                {{ option.label }}
+                </option>
             </select>
             <span class="focus"></span>
         </div>
@@ -17,10 +17,28 @@
 <script>
 export default {
   name: 'Product',
+  computed: {
+    selectedOption: {
+      get() {
+        return this.selected;
+      },
+      set(val) {
+        this.$emit('update:selected', val);
+      },
+    },
+  },
   props: {
     label: {
       required: false,
       type: String,
+    },
+    options: {
+      type: Array,
+      default: () => [],
+    },
+    selected: {
+      type: String,
+      default: '',
     },
   },
 };

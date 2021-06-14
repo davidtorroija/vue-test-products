@@ -12,7 +12,7 @@ http://localhost:8080
 ---
 
 ## Primary tasks
-- The user should be able to sort the items on the list.
+- ~~The user should be able to sort the items on the list.~~
 - ~~On a page refresh action, it should display the last state of the list.~~
 - Show a message when no results.
 - ~~Each item should have the actions: edit and delete. Edit allows a user to update the

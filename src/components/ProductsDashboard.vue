@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AddModal @close="closeAddModal" v-if="isAddModalVisible" :editingProduct="editingProduct"/>
+    <AddModal @close="closeAddModal" v-if="isAddModalVisible" :editingProduct="editingProduct" />
     <h1> Code test for David Torroija</h1>
     <div v-if="products.length">
       <div class="Products__Header">
@@ -8,7 +8,7 @@
           ADD
           <span class="fa fas fa-plus"></span>
         </button>
-        <Dropdown label="Sort Items by:" />
+        <Dropdown label="Sort Items by:" :options="sortByOptions" :selected.sync="sortBy" />
         <span class="px-1"> Listing {{products.length}} products.</span>
       </div>
       <div class="row">
@@ -45,8 +45,8 @@ export default {
     return {
       isAddModalVisible: false,
       editingProduct: null,
-      sortBy: 'description:desc',
-      sortyByOptions: [
+      sortBy: 'date:desc',
+      sortByOptions: [
         {
           label: 'Description A to Z',
           value: 'description:asc',
