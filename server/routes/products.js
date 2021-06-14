@@ -4,7 +4,17 @@ module.exports = (function () {
 
   const Product = require('../models/Product');
   router.get('/', (req, res) => {
-    Product.find()
+    console.log('query1', req.query.sort);
+    const sort = {
+      field: 'date',
+      order: '-1',
+    };
+
+    if (req.query.sort) {
+      const arrSort = req.query.sort.split(':');
+      [sort.field, sort.order] = arrSort;
+    }
+    Product.find({}, null, { sort: { [sort.field]: sort.order } })
       .then((items) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(items));

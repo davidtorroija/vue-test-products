@@ -18,8 +18,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async getProducts({ commit }) {
-      const products = await productsApi.getProducts();
+    async getProducts({ commit }, { sortBy }) {
+      const products = await productsApi.getProducts({ sortBy });
       commit('SET_PRODUCTS', { products });
     },
     async addProduct({ commit }, { imageURL, description }) {

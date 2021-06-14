@@ -45,26 +45,31 @@ export default {
     return {
       isAddModalVisible: false,
       editingProduct: null,
-      sortBy: 'date:desc',
+      sortBy: 'date:-1',
       sortByOptions: [
         {
           label: 'Description A to Z',
-          value: 'description:asc',
+          value: 'description:1',
         },
         {
           label: 'Description Z to A',
-          value: 'description:desc',
+          value: 'description:-1',
         },
         {
           label: 'Created Ascending',
-          value: 'date:desc',
+          value: 'date:1',
         },
         {
           label: 'Created Descending',
-          value: 'date:desc',
+          value: 'date:-1',
         },
       ],
     };
+  },
+  watch: {
+    sortBy() {
+      this.getProducts({ sortBy: this.sortBy });
+    },
   },
   components: {
     AddModal,
@@ -89,14 +94,14 @@ export default {
     },
     async onDeleteProduct({ _id }) {
       await this.deleteProduct({ id: _id });
-      this.getProducts();
+      this.getProducts({ sortBy: this.sortBy });
     },
   },
   computed: {
     ...mapGetters(['products']),
   },
   created() {
-    this.getProducts();
+    this.getProducts({ sortBy: this.sortBy });
   },
 };
 </script>

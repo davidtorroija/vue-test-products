@@ -10,9 +10,9 @@ const api = axios.create({
 // PUT             Updates an existing resource.
 // DELETE          Deletes a resource.
 export default {
-  getProducts() {
+  getProducts({ sortBy }) {
     return api
-      .get()
+      .get(`?sort=${sortBy}`)
       .then((response) => response.data)
       .catch((err) => {
         throw err;
