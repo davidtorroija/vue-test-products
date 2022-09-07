@@ -1,7 +1,7 @@
 {
   "name": "test-vue",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "serve-prod": "NODE_ENV=production vue-cli-service serve",

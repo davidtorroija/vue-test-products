@@ -45,7 +45,6 @@ export default {
   },
   methods: {
     addUser() {
-      console.log('new ', this.userName, this.userLastName);
       this.users.splice(this.users.length, 1,
         { firstName: this.userName, lastName: this.userLastName });
     },

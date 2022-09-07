@@ -14,7 +14,6 @@ export default new Vuex.Store({
     },
     ADD_PRODUCT(state, { product }) {
       Vue.set(state.products, state.products.length, product);
-      console.log('pro', state.products);
     },
   },
   actions: {

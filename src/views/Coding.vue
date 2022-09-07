@@ -14,7 +14,7 @@ export default {
   name: 'Coding',
   components: {
     TableChallengeTestDome,
-    TodoList
+    TodoList,
   },
 };
 </script>
